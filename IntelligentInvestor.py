@@ -84,7 +84,7 @@ lessThan(?t, 2023) -> Empresa(?i, ?n)""")
     inv = Auditoria()
     sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True)
 
-print(list(default_world.inconsistent_classes()))
+describeIndividual(inv)
 
 
 with onto:

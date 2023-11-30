@@ -11,6 +11,7 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Import>http://localhost:9000/RepresentanteLegal.owl</Import>
+    <Import>http://localhost:9000/RepresentanteSuplente.owl</Import>
     <!-- Declaración de Clases -->
     <Declaration>
         <Class IRI="#Company"/>
