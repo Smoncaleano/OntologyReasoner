@@ -1,0 +1,47 @@
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://localhost:9000/RepresentanteLegal"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://localhost:9000/RepresentanteLegal">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+
+    <Declaration>
+        <Class IRI="#RepresentanteLegal"/>
+    </Declaration>
+
+    <!-- Declaración de Propiedades de Datos -->
+    <Declaration>
+        <DataProperty IRI="#hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasIdNumber"/>
+    </Declaration>
+  
+
+  
+    <!-- Definición de Propiedades de Datos -->
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasName"/>
+        <Class IRI="#RepresentanteLegal"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasIdNumber"/>
+        <Class IRI="#RepresentanteLegal"/>
+    </DataPropertyDomain>
+     <DataPropertyRange>
+        <DataProperty IRI="#hasIdNumber"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    
+</Ontology>

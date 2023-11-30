@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://localhost:9000/CompaniesRecord"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://localhost:9000/CompaniesRecord">
+    <Prefix name="" IRI="http://localhost:9000/CompaniesRecord"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://localhost:9000/RepresentantesLegalesRecord.owl</Import>
+    <Import>http://localhost:9000/RepresentantesSuplentesRecord.owl</Import>
+    <Import>http://localhost:9000/Company.owl</Import>
+
+
+    <Declaration>
+        <NamedIndividual IRI="#CocaCola"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Colombina"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Servientrega"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="http://localhost:9000/Company#Company"/>
+        <NamedIndividual IRI="#CocaCola"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://localhost:9000/Company#Company"/>
+        <NamedIndividual IRI="#Colombina"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://localhost:9000/Company#Company"/>
+        <NamedIndividual IRI="#Servientrega"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+    
+        <ObjectProperty IRI="http://localhost:9000/Company#hasLegalRepresentative"/>
+        <NamedIndividual IRI="#Colombina"/>
+        <NamedIndividual IRI="http://localhost:9000/RepresentantesLegalesRecord#Nicolas"/>
+        
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+    
+        <ObjectProperty IRI="http://localhost:9000/Company#hasLegalRepresentative"/>
+        <NamedIndividual IRI="#CocaCola"/>
+        <NamedIndividual IRI="http://localhost:9000/RepresentantesLegalesRecord#Diego"/>
+        
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+    
+        <ObjectProperty IRI="http://localhost:9000/Company#hasLegalRepresentative"/>
+        <NamedIndividual IRI="#Servientrega"/>
+        <NamedIndividual IRI="http://localhost:9000/RepresentantesLegalesRecord#Sebastian"/>
+        
+    </ObjectPropertyAssertion>
+
+
+    <ObjectPropertyAssertion>
+    
+        <ObjectProperty IRI="http://localhost:9000/Company#hasSustituteRepresentative"/>
+        <NamedIndividual IRI="#Colombina"/>
+        <NamedIndividual IRI="http://localhost:9000/RepresentantesSuplentesRecord#Fran"/>
+        
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+    
+        <ObjectProperty IRI="http://localhost:9000/Company#hasSustituteRepresentative"/>
+        <NamedIndividual IRI="#CocaCola"/>
+        <NamedIndividual IRI="http://localhost:9000/RepresentantesSuplentesRecord#Ruben"/>
+        
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+    
+        <ObjectProperty IRI="http://localhost:9000/Company#hasSustituteRepresentative"/>
+        <NamedIndividual IRI="#Servientrega"/>
+        <NamedIndividual IRI="http://localhost:9000/RepresentantesSuplentesRecord#Jhon"/>
+        
+    </ObjectPropertyAssertion>
+
+
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasName"/>
+        <NamedIndividual IRI="#Colombina"/>
+              <Literal>Conservas Colombina S.A</Literal>
+        
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasName"/>
+        <NamedIndividual IRI="#CocaCola"/>
+             <Literal>The Coca Cola Company</Literal>
+        
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasName"/>
+        <NamedIndividual IRI="#Servientrega"/>
+              <Literal>Servientrega S.A</Literal>
+        
+    </DataPropertyAssertion>
+
+
+    
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasEnrollmentNumber"/>
+        <NamedIndividual IRI="#Colombina"/>
+              <Literal>932578325</Literal>
+        
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasEnrollmentNumber"/>
+        <NamedIndividual IRI="#CocaCola"/>
+             <Literal>9032895323</Literal>
+        
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasEnrollmentNumber"/>
+        <NamedIndividual IRI="#Servientrega"/>
+              <Literal>698765124</Literal>
+        
+    </DataPropertyAssertion>
+
+
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasDateOfRenovation"/>
+        <NamedIndividual IRI="#Colombina"/>
+         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2023</Literal>
+        
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+    
+        <DataProperty IRI="http://localhost:9000/Company#hasDateOfRenovation"/>
+        <NamedIndividual IRI="#CocaCola"/>
+         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2020</Literal>
+        
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://localhost:9000/Company#hasDateOfRenovation"/>
+        <NamedIndividual IRI="#Servientrega"/>
+         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2023</Literal>
+        
+    </DataPropertyAssertion>
+
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
