@@ -1,6 +1,5 @@
-import os
 from owlready2 import *
-from datetime import datetime
+
 
 def describeEntity(obj):
     print("\n" + "*"*20)
@@ -23,10 +22,7 @@ def describeIndividual(obj):
     print("*"*20)
 
 
-#onto = get_ontology("http://localhost:9000/Company.owl")
-#onto = get_ontology("http://localhost:9000/StockExchangeShares.owl")
-#onto = get_ontology("http://localhost:9000/CompaniesRecord.owl")
-onto = get_ontology("http://localhost:9000/CompaniesRecord.owl")
+onto = get_ontology("http://localhost:9000/ProceduresRecord.owl")
 
 onto.load()
 
@@ -88,27 +84,101 @@ lessThan(?t, 2023) -> Empresa(?i, ?n)""")
     inv = Auditoria()
     sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True)
 
+print(list(default_world.inconsistent_classes()))
 
-describeIndividual(inv)
 
 with onto:
-    class Find(Thing): pass
-    class Representante(Find >> str, FunctionalProperty): pass
+    class FindLegal(Thing): pass
+    class RepresentanteLegal(FindLegal >> str, FunctionalProperty): pass
     
 
 with onto:
     rule = Imp()
-    rule.set_as_rule("""Find(?i),
+    rule.set_as_rule("""FindLegal(?i),
 http://localhost:9000/Company#Company(?s),
 
 http://localhost:9000/Company#hasLegalRepresentative(?s, ?r),
 http://localhost:9000/RepresentanteLegal#RepresentanteLegal(?r),
 http://localhost:9000/RepresentanteLegal#hasName(?r, ?p),
 http://localhost:9000/Company#hasName(?s, ?n),
-equal(?n, "The Coca Cola Company") -> Representante(?i, ?p)""")
-    inv = Find()
+equal(?n, "The Coca Cola Company") -> RepresentanteLegal(?i, ?p)""")
+    inv = FindLegal()
+    sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True)
+    
+describeIndividual(inv)
+
+
+
+with onto:
+    class FindSustitute(Thing): pass
+    class RepresentanteSuplente(FindSustitute >> str, FunctionalProperty): pass
+    
+
+with onto:
+    rule = Imp()
+    rule.set_as_rule("""FindSustitute(?i),
+http://localhost:9000/Company#Company(?s),
+http://localhost:9000/Company#hasSustituteRepresentative(?s, ?u),
+http://localhost:9000/RepresentanteSuplente#RepresentanteSuplente(?u),
+http://localhost:9000/RepresentanteSuplente#hasName(?u, ?p),
+http://localhost:9000/Company#hasName(?s, ?n),
+equal(?n, "Servientrega S.A") -> RepresentanteSuplente(?i, ?p)""")
+    inv = FindSustitute()
     sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True)
 
 
 describeIndividual(inv)
+
+
+
+with onto:
+    class HasProcedures(Thing): pass
+    class Procedure(HasProcedures >> str, FunctionalProperty): pass
+    
+
+with onto:
+    rule = Imp()
+    rule.set_as_rule("""HasProcedures(?i),
+http://localhost:9000/Procedures#Procedures(?s),
+http://localhost:9000/Procedures#hasProcedureName(?s, ?p),
+http://localhost:9000/Procedures#isUssuedTo(?s, ?n),
+http://localhost:9000/Company#Company(?n),
+http://localhost:9000/Company#hasEnrollmentNumber(?n, ?m),              
+equal(?m, "932578325") -> Procedure(?i, ?p)""")
+    inv = HasProcedures()
+    sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True)
+
+
+describeIndividual(inv)
+
+
+
+
+with onto:
+    class WhoIsGoingToCancel(Thing): pass
+    class Option(WhoIsGoingToCancel >> str, FunctionalProperty): pass
+    
+
+with onto:
+    rule = Imp()
+    rule.set_as_rule("""WhoIsGoingToCancel(?i),
+http://localhost:9000/Procedures#Procedures(?s),
+http://localhost:9000/Procedures#hasProcedureName(?s, ?p),
+http://localhost:9000/Procedures#isUssuedTo(?s, ?n),
+http://localhost:9000/Company#Company(?n),
+http://localhost:9000/Company#hasName(?n, ?m),              
+equal(?p, "Cancelacion de matricula") -> Option(?i, ?m)""")
+    inv = WhoIsGoingToCancel()
+    sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True)
+
+
+describeIndividual(inv)
+
+
+
+
+
+
+
+
 
